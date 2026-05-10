@@ -89,38 +89,9 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 .note-key.correct{border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,.4);transform:scale(1.12);}
 .music-score{color:rgba(255,255,255,.25);font-size:12px;margin-top:14px;letter-spacing:2px;}
 
-/* ===== 场景5：漂流瓶 ===== */
-.scene-5{background:linear-gradient(180deg,#0a1628,#0d2137,#0a1628);}
-.scene-5 .sub{color:rgba(200,220,240,.3);font-size:14px;margin-bottom:8px;}
-.water{position:relative;width:300px;height:280px;}
-.wave-bg{position:absolute;bottom:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,transparent,rgba(30,80,120,.2));border-radius:50%;}
-.bottle{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);width:64px;height:100px;background:rgba(200,230,255,.08);border-radius:6px 6px 22px 22px;border:2px solid rgba(200,230,255,.15);cursor:pointer;transition:.5s;backdrop-filter:blur(4px);}
-.bottle::before{content:'';position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:36px;height:20px;background:rgba(200,230,255,.06);border-radius:6px 6px 0 0;border:2px solid rgba(200,230,255,.12);border-bottom:none;}
-.bottle::after{content:'\u2709';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;opacity:.3;}
-.bottle.shake{animation:bottleShake .5s ease;}
-@keyframes bottleShake{0%,100%{transform:translateX(-50%) rotate(0)}25%{transform:translateX(-50%) rotate(-8deg)}75%{transform:translateX(-50%) rotate(8deg)}}
-.bottle.open{transform:translateX(-50%) scale(1.08);border-color:rgba(200,230,255,.4);}
-.bottle.open::after{opacity:.8;}
-.msg-scroll{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:240px;padding:20px 18px;background:linear-gradient(135deg,#f5e6c8,#e8d5a8);border-radius:6px;z-index:10;transition:transform .8s cubic-bezier(.34,1.56,.64,1);}
-.msg-scroll.show{transform:translate(-50%,-50%) scale(1);}
-.msg-scroll .scroll-inner{font-size:14px;color:#5a3a1a;line-height:1.9;text-align:center;}
-.bottle-hint{color:rgba(200,230,255,.3);font-size:13px;margin-top:18px;}
-
-/* ===== 场景6：妈妈的手 ===== */
-.scene-6{background:linear-gradient(180deg,#1a0a18,#2a1020,#1a0a18);}
-.scene-6 .sub{color:rgba(220,180,200,.35);font-size:14px;margin-bottom:12px;}
-.hands-area{position:relative;width:280px;height:280px;}
-.hand-place{position:absolute;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(60,30,40,.3),transparent 70%);}
-.hand-memory{position:absolute;font-size:0;opacity:0;transition:all .8s ease;cursor:default;}
-.hand-memory.show{font-size:40px;opacity:1;}
-.hand-memory .hm-label{font-size:10px;color:rgba(255,200,220,.4);margin-top:2px;text-align:center;display:none;}
-.hand-memory.show .hm-label{display:block;}
-.hand-hint{color:rgba(220,180,200,.25);font-size:13px;margin-top:16px;}
-.hand-prog{color:rgba(220,180,200,.15);font-size:12px;margin-top:6px;}
-
-/* ===== 场景7：许愿灯 ===== */
-.scene-7{background:linear-gradient(180deg,#0a0a1a,#1a0a2a,#0a0a1a);}
-.scene-7 .sub{color:rgba(200,180,220,.3);font-size:14px;margin-bottom:10px;}
+/* ===== 场景5：许愿灯 ===== */
+.scene-5{background:linear-gradient(180deg,#0a0a1a,#1a0a2a,#0a0a1a);}
+.scene-5 .sub{color:rgba(200,180,220,.3);font-size:14px;margin-bottom:10px;}
 .lantern-wrap{position:relative;width:180px;height:240px;cursor:pointer;}
 .lantern-body{width:140px;height:160px;margin:0 auto;background:radial-gradient(ellipse at 50% 60%,rgba(255,100,50,.7),rgba(200,50,30,.5));border-radius:70px 70px 50px 50px;position:relative;box-shadow:0 0 60px rgba(255,100,50,.25),0 0 120px rgba(200,50,30,.1);transition:.5s;animation:lanternGlow 2s ease-in-out infinite alternate;}
 @keyframes lanternGlow{from{box-shadow:0 0 50px rgba(255,100,50,.2)}to{box-shadow:0 0 80px rgba(255,100,50,.4),0 0 160px rgba(200,50,30,.15)}}
@@ -128,23 +99,12 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 .lantern-line{width:2px;height:35px;background:#5a3a1a;margin:0 auto;}
 .lantern-tassel{width:26px;height:6px;background:#7a4a2a;margin:8px auto 0;border-radius:0 0 3px 3px;}
 .lantern-hint{color:rgba(200,180,220,.25);font-size:13px;margin-top:18px;}
-.wish-cloud{position:absolute;font-size:14px;color:rgba(200,180,220,.5);opacity:0;transition:all 1.5s ease;pointer-events:none;letter-spacing:2px;}
+.wish-cloud{position:absolute;font-size:14px;color:rgba(200,180,220,.6);opacity:0;transition:all 1.5s ease;pointer-events:none;letter-spacing:2px;}
 .wish-cloud.show{opacity:1;transform:translateY(-50px);}
 
-/* ===== 场景8：回家的路 ===== */
-.scene-8{background:linear-gradient(180deg,#0a1a0a,#1a2d1a,#0d1f0d);}
-.scene-8 .sub{color:rgba(180,210,160,.3);font-size:14px;margin-bottom:10px;}
-.road-area{position:relative;width:300px;height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.road-path{width:60px;height:200px;background:rgba(60,80,50,.2);border-radius:4px;position:relative;}
-.road-step{position:absolute;left:50%;transform:translateX(-50%);font-size:0;transition:all .5s ease;cursor:pointer;opacity:.2;}
-.road-step .step-label{display:none;font-size:11px;color:rgba(180,210,160,.4);white-space:nowrap;position:absolute;left:70px;top:50%;transform:translateY(-50%);}
-.road-step.reached{font-size:28px;opacity:1;}
-.road-step.reached .step-label{display:block;}
-.road-hint{color:rgba(180,210,160,.25);font-size:13px;margin-top:14px;}
-
-/* ===== 场景9：终章 ===== */
-.scene-9{background:linear-gradient(135deg,#1a0a2a,#2a1040,#1a0a2a);overflow:hidden;}
-.scene-9 .sub{color:rgba(200,180,220,.25);font-size:12px;margin-bottom:8px;}
+/* ===== 场景6：终章 ===== */
+.scene-6{background:linear-gradient(135deg,#1a0a2a,#2a1040,#1a0a2a);overflow:hidden;}
+.scene-6 .sub{color:rgba(200,180,220,.25);font-size:12px;margin-bottom:8px;}
 .final-heart{font-size:70px;animation:finalFloat 2s ease-in-out infinite;margin-bottom:8px;opacity:0;transition:1.5s;}
 .final-heart.show{opacity:1;}
 @keyframes finalFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -222,39 +182,8 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
   <button class="next-btn hidden" id="next4" onclick="goScene(5)">\u2192</button>
 </div>
 
-<!-- 场景5：漂流瓶 -->
+<!-- 场景5：许愿灯 -->
 <div class="scene scene-5" id="s5">
-  <div class="sub">\u2709 一封家书</div>
-  <div class="water">
-    <div class="wave-bg"></div>
-    <div class="bottle" id="bottle"></div>
-    <div class="msg-scroll" id="msgScroll">
-      <div class="scroll-inner" id="letterContent">
-        妈，<br>
-        每次回家都能闻到饭菜香<br>
-        每次出门你都站在门口目送<br>
-        这些我都记得<br><br>
-        谢谢你
-      </div>
-    </div>
-  </div>
-  <div class="bottle-hint" id="bottleHint">点一下瓶子</div>
-  <button class="next-btn hidden" id="next5" onclick="goScene(6)">\u2192</button>
-</div>
-
-<!-- 场景6：妈妈的手 -->
-<div class="scene scene-6" id="s6">
-  <div class="sub">\uD83D\uDC46 妈妈的手</div>
-  <div class="hands-area" id="handsArea">
-    <div class="hand-place"></div>
-  </div>
-  <div class="hand-hint" id="handHint">点击，看看妈妈的手做过什么</div>
-  <div class="hand-prog" id="handProg">0 / 6</div>
-  <button class="next-btn hidden" id="next6" onclick="goScene(7)">\u2192</button>
-</div>
-
-<!-- 场景7：许愿灯 -->
-<div class="scene scene-7" id="s7">
   <div class="sub">\uD83C\uDFEE 愿</div>
   <div class="lantern-wrap" id="lanternWrap" onclick="floatLantern()">
     <div class="lantern-line"></div>
@@ -263,21 +192,11 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
     <div class="lantern-tassel"></div>
   </div>
   <div class="lantern-hint" id="lanternHint">点一下，放一盏灯</div>
-  <button class="next-btn hidden" id="next7" onclick="goScene(8)">\u2192</button>
+  <button class="next-btn hidden" id="next5" onclick="goScene(6)">\u2192</button>
 </div>
 
-<!-- 场景8：回家的路 -->
-<div class="scene scene-8" id="s8">
-  <div class="sub">\uD83C\uDFE0 回家的路</div>
-  <div class="road-area" id="roadArea">
-    <div class="road-path" id="roadPath"></div>
-  </div>
-  <div class="road-hint" id="roadHint">一步步走回家</div>
-  <button class="next-btn hidden" id="next8" onclick="goScene(9)">\u2192</button>
-</div>
-
-<!-- 场景9 -->
-<div class="scene scene-9" id="s9">
+<!-- 场景6 -->
+<div class="scene scene-6" id="s6">
   <div class="final-heart" id="finalHeart">\uD83D\uDC96</div>
   <div class="final-title" id="finalTitle">辛苦了，妈妈</div>
   <div class="final-lines" id="finalLines">
@@ -347,9 +266,6 @@ const SFX={
   reveal(){this.t(660,.12,'sine',.2);setTimeout(()=>this.t(880,.15,'sine',.15),60)},
   flip(){this.t(400,.08,'sine',.18);setTimeout(()=>this.t(600,.1,'sine',.12),60)},
   note(f){this.t(f,.35,'sine',.22)},
-  bottle(){this.t(300,.1,'triangle',.12);setTimeout(()=>this.t(400,.15,'triangle',.1),80);setTimeout(()=>this.t(500,.2,'triangle',.08),160)},
-  tap(){this.t(700,.06,'sine',.12)},
-  step(){this.t(350,.1,'triangle',.15);setTimeout(()=>this.t(450,.12,'triangle',.12),60)},
   lantern(){this.t(500,.25,'sine',.18);setTimeout(()=>this.t(700,.35,'sine',.12),150)},
   chime(){const n=[880,1100,1320];n.forEach((f,i)=>setTimeout(()=>this.t(f,.5,'sine',.12),i*150))},
   complete(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>this.t(f,.35,'sine',.18),i*120))},
@@ -372,11 +288,11 @@ document.addEventListener('touchstart',()=>{
 let curScene=0;
 function dots(){
   const c=document.getElementById('dots');c.innerHTML='';
-  for(let i=0;i<10;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');c.appendChild(d)}
+  for(let i=0;i<7;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');c.appendChild(d)}
 }
 function updDots(){document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===curScene))}
 function goScene(n){
-  if(n<0||n>9)return;
+  if(n<0||n>6)return;
   SFX.ensure();SFX.pageTurn();
   document.getElementById('s'+curScene).classList.remove('active');
   document.getElementById('s'+curScene).classList.add('out');
@@ -388,8 +304,6 @@ function goScene(n){
     if(n===2)initSayings();
     if(n===3)initChildhood();
     if(n===4)initMusicBox();
-    if(n===6)initHands();
-    if(n===8)initRoad();
   },300);
 }
 
@@ -565,130 +479,53 @@ function hitNote(note,el){
   }
 }
 
-// ===== 场景5：漂流瓶 =====
-let bottleOpened=false;
-(function(){
-  document.getElementById('bottle').addEventListener('click',()=>{
-    if(bottleOpened)return;
-    bottleOpened=true;
-    SFX.bottle();
-    const b=document.getElementById('bottle');
-    b.classList.add('shake');
-    setTimeout(()=>{
-      b.classList.remove('shake');b.classList.add('open');
-      document.getElementById('msgScroll').classList.add('show');
-      document.getElementById('bottleHint').textContent='\u2709';
-      document.getElementById('next5').classList.remove('hidden');
-      SFX.chime();
-    },500);
-  });
-})();
-
-// ===== 场景6：妈妈的手 =====
-let handRevealed=0;
-const handData=[
-  {e:'\uD83D\uDC63',l:'牵你学走路'},{e:'\uD83E\uDDF5',l:'缝扣子'},{e:'\uD83C\uDF73',l:'做饭'},
-  {e:'\uD83D\uDC87',l:'扎辫子'},{e:'\uD83C\uDFA4',l:'扇扇子'},{e:'\uD83D\uDC4B',l:'挥手送别'}
-];
-function initHands(){
-  const oldArea=document.getElementById('handsArea');
-  const newArea=document.createElement('div');newArea.className='hands-area';newArea.id='handsArea';
-  newArea.innerHTML='<div class="hand-place"></div>';
-  oldArea.replaceWith(newArea);
-  handRevealed=0;
-  document.getElementById('handHint').textContent='点击，看看妈妈的手做过什么';
-  document.getElementById('handProg').textContent='0 / 6';
-  document.getElementById('next6').classList.add('hidden');
-  const r=()=>Math.random()*200+40;
-  newArea.addEventListener('click',(e)=>{
-    if(handRevealed>=6)return;
-    SFX.tap();
-    const d=handData[handRevealed];
-    const el=document.createElement('div');el.className='hand-memory';
-    el.innerHTML=d.e+'<div class="hm-label">'+d.l+'</div>';
-    el.style.left=r()+'px';el.style.top=r()+'px';
-    newArea.appendChild(el);
-    setTimeout(()=>el.classList.add('show'),50);
-    handRevealed++;
-    document.getElementById('handProg').textContent=handRevealed+' / 6';
-    document.getElementById('handHint').textContent='\u2728 '+d.l;
-    if(handRevealed===6){
-      document.getElementById('handHint').textContent='\u2728 她的手，做了太多';
-      document.getElementById('next6').classList.remove('hidden');
-      SFX.chime();
-    }
-  });
-}
-
-// ===== 场景7：许愿灯 =====
+// ===== 场景5：许愿灯 =====
 let lanternCount=0;
+const wishes=[
+  '身体健康，百病不侵',
+  '平平安安，万事顺遂',
+  '天天开心，笑口常开',
+  '心宽体健，无忧无虑',
+  '岁月静好，慢些老去',
+  '想吃就吃，想睡就睡',
+  '每天都能睡个好觉',
+  '让我多陪陪你'
+];
 function floatLantern(){
-  if(lanternCount>=3)return;
+  if(lanternCount>=wishes.length)return;
   SFX.lantern();
   const body=document.querySelector('.lantern-body');
   body.style.transform='translateY(-30px)';
   body.style.boxShadow='0 0 100px rgba(255,100,50,.6),0 0 200px rgba(200,50,30,.25)';
   setTimeout(()=>{body.style.opacity='.2';body.style.transform='translateY(-100px) scale(.5)';},400);
-  const wishes=['身体健康','平平安安','天天开心'];
   const wc=document.createElement('div');wc.className='wish-cloud';
   wc.textContent='\u2728 '+wishes[lanternCount];
-  wc.style.left=(30+lanternCount*60)+'px';wc.style.top='30px';
-  document.getElementById('s7').appendChild(wc);
+  const col=lanternCount%4;const row=Math.floor(lanternCount/4);
+  wc.style.left=(10+col*95)+'px';wc.style.top=(20+row*60)+'px';
+  document.getElementById('s5').appendChild(wc);
   setTimeout(()=>wc.classList.add('show'),300);
   lanternCount++;
-  document.getElementById('lanternHint').textContent='\u2728 '+lanternCount+'/3';
-  if(lanternCount===3){
+  document.getElementById('lanternHint').textContent='\u2728 '+lanternCount+'/'+wishes.length;
+  if(lanternCount===wishes.length){
     setTimeout(()=>{
       document.getElementById('lanternHint').textContent='\u2728 愿';
-      document.getElementById('next7').classList.remove('hidden');
+      document.getElementById('next5').classList.remove('hidden');
       SFX.chime();
     },800);
   } else setTimeout(()=>{body.style.transform='';body.style.opacity='1';body.style.boxShadow=''},2000);
 }
 
-// ===== 场景8：回家的路 =====
-let roadStep=0;
-const roadData=[
-  {e:'\uD83C\uDFE0',l:'出发'},{e:'\uD83C\uDF32',l:'路边的树'},{e:'\uD83C\uDFD9\uFE0F',l:'熟悉的街角'},
-  {e:'\uD83C\uDFEA',l:'小店'},{e:'\uD83C\uDFE1',l:'到家了'}
-];
-function initRoad(){
-  const path=document.getElementById('roadPath');path.innerHTML='';roadStep=0;
-  document.getElementById('roadHint').textContent='一步步走回家';
-  document.getElementById('next8').classList.add('hidden');
-  const stepH=200/roadData.length;
-  roadData.forEach((d,i)=>{
-    const s=document.createElement('div');s.className='road-step';
-    s.textContent=d.e;
-    s.style.top=(i*stepH+stepH/2-14)+'px';
-    s.innerHTML=d.e+'<span class="step-label">'+d.l+'</span>';
-    s.addEventListener('click',()=>{
-      if(i!==roadStep||s.classList.contains('reached'))return;
-      SFX.step();
-      s.classList.add('reached');
-      roadStep++;
-      document.getElementById('roadHint').textContent='\u2728 '+d.l;
-      if(roadStep===roadData.length){
-        document.getElementById('roadHint').textContent='\u2728 到家了';
-        document.getElementById('next8').classList.remove('hidden');
-        SFX.chime();
-      }
-    });
-    path.appendChild(s);
-  });
-}
-
-// ===== 场景9：终章 =====
+// ===== 场景6：终章 =====
 (function(){
   const obs=new MutationObserver(()=>{
-    if(document.getElementById('s9').classList.contains('active')){
+    if(document.getElementById('s6').classList.contains('active')){
       setTimeout(()=>document.getElementById('finalHeart').classList.add('show'),300);
       setTimeout(()=>document.getElementById('finalTitle').classList.add('show'),800);
       setTimeout(()=>document.getElementById('finalLines').classList.add('show'),1600);
       setTimeout(()=>document.getElementById('finalAgain').classList.add('show'),2400);
       const c=document.getElementById('finalPetals');
       const iv=setInterval(()=>{
-        if(!document.getElementById('s9').classList.contains('active')){clearInterval(iv);return;}
+        if(!document.getElementById('s6').classList.contains('active')){clearInterval(iv);return;}
         const p=document.createElement('div');
         p.textContent=['\uD83C\uDF38','\uD83C\uDF3A','\u2728','\uD83C\uDF37'][Math.floor(Math.random()*4)];
         p.style.cssText='position:absolute;left:'+(Math.random()*100)+'%;top:-16px;font-size:'+(16+Math.random()*18)+'px;animation:dropFall '+(4+Math.random()*3)+'s linear forwards;';
@@ -698,20 +535,18 @@ function initRoad(){
       setTimeout(()=>SFX.melody(),400);
     }
   });
-  obs.observe(document.getElementById('s9'),{attributes:true,attributeFilter:['class']});
+  obs.observe(document.getElementById('s6'),{attributes:true,attributeFilter:['class']});
 })();
 const sFall=document.createElement('style');sFall.textContent='@keyframes dropFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}';
 document.head.appendChild(sFall);
 
 function restartJourney(){
   curScene=0;blowVal=0;foodRevealed=0;sayingRevealed=0;childRevealed=0;
-  melodyIdx=0;boxOpened=false;bottleOpened=false;handRevealed=0;lanternCount=0;roadStep=0;
+  melodyIdx=0;boxOpened=false;lanternCount=0;
   document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active','out'));
   document.querySelectorAll('.food-tile').forEach(t=>t.classList.remove('revealed'));
   document.querySelectorAll('.saying-tile').forEach(t=>t.classList.remove('revealed'));
   document.querySelectorAll('.child-tile').forEach(t=>t.classList.remove('revealed'));
-  document.querySelectorAll('.hand-memory').forEach(h=>h.remove());
-  document.querySelectorAll('.road-step').forEach(s=>s.classList.remove('reached'));
   document.querySelectorAll('.wish-cloud').forEach(w=>w.remove());
   document.querySelectorAll('.next-btn').forEach(b=>b.classList.add('hidden'));
   const flame=document.getElementById('flame');
@@ -722,12 +557,8 @@ function restartJourney(){
   document.getElementById('boxLid').classList.remove('open');
   document.getElementById('boxKey').classList.remove('show');
   document.getElementById('musicScore').textContent='\u2728 ...';
-  document.getElementById('bottle').classList.remove('open');
-  document.getElementById('msgScroll').classList.remove('show');
-  document.getElementById('bottleHint').textContent='点一下瓶子';
   document.querySelector('.lantern-body').style.cssText='';
   document.getElementById('lanternHint').textContent='点一下，放一盏灯';
-  document.getElementById('roadHint').textContent='一步步走回家';
   document.getElementById('finalHeart').classList.remove('show');
   document.getElementById('finalTitle').classList.remove('show');
   document.getElementById('finalLines').classList.remove('show');
