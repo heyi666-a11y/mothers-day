@@ -55,7 +55,7 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 .scene-2 .sub{color:rgba(200,200,220,.35);font-size:14px;margin-bottom:12px;}
 .saying-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:290px;}
 .saying-tile{aspect-ratio:1;background:rgba(50,40,55,.4);border-radius:10px;cursor:pointer;transition:all .7s ease;border:1px solid rgba(255,255,255,.04);display:flex;justify-content:center;align-items:center;padding:8px;text-align:center;font-size:0;color:rgba(255,255,255,.65);line-height:1.5;}
-.saying-tile::before{content:'\u2668';font-size:18px;color:rgba(255,255,255,.08);}
+.saying-tile::before{content:'♨';font-size:18px;color:rgba(255,255,255,.08);}
 .saying-tile.revealed{background:rgba(70,50,70,.5);border-color:rgba(255,200,200,.08);box-shadow:0 0 10px rgba(255,200,200,.04);font-size:14px;letter-spacing:1px;}
 .saying-tile.revealed::before{display:none;}
 .saying-hint{color:rgba(200,200,220,.25);font-size:13px;margin-top:14px;}
@@ -65,7 +65,7 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 .scene-3 .sub{color:rgba(220,200,180,.35);font-size:14px;margin-bottom:12px;}
 .child-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:280px;}
 .child-tile{aspect-ratio:1;background:linear-gradient(145deg,#3a2520,#2a1a15);border-radius:14px;display:flex;justify-content:center;align-items:center;font-size:36px;cursor:pointer;transition:all .5s cubic-bezier(.34,1.56,.64,1);border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;}
-.child-tile::before{content:'\u2744';font-size:24px;opacity:.15;}
+.child-tile::before{content:'❄';font-size:24px;opacity:.15;}
 .child-tile.revealed{background:linear-gradient(145deg,#3a2a2a,#2a1a20);transform:rotateY(360deg);border-color:rgba(200,180,150,.1);box-shadow:0 0 12px rgba(200,180,150,.06);}
 .child-tile.revealed::before{display:none;}
 .child-tile.revealed .child-icon{display:block;}
@@ -98,9 +98,15 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 .lantern-top{width:70px;height:10px;background:#5a3a1a;margin:0 auto;border-radius:3px 3px 0 0;}
 .lantern-line{width:2px;height:35px;background:#5a3a1a;margin:0 auto;}
 .lantern-tassel{width:26px;height:6px;background:#7a4a2a;margin:8px auto 0;border-radius:0 0 3px 3px;}
-.lantern-hint{color:rgba(200,180,220,.25);font-size:13px;margin-top:18px;}
-.wish-cloud{position:absolute;font-size:14px;color:rgba(200,180,220,.6);opacity:0;transition:all 1.5s ease;pointer-events:none;letter-spacing:2px;}
-.wish-cloud.show{opacity:1;transform:translateY(-50px);}
+.wish-input-wrap{width:280px;margin-top:20px;}
+.wish-input{width:100%;padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.7);font-size:14px;text-align:center;outline:none;transition:.3s;}
+.wish-input::placeholder{color:rgba(255,255,255,.3);}
+.wish-input:focus{border-color:rgba(255,200,150,.4);background:rgba(255,255,255,.12);}
+.float-btn{margin-top:16px;padding:10px 28px;background:rgba(255,100,50,.25);border:1px solid rgba(255,100,50,.4);border-radius:20px;color:rgba(255,200,150,.8);font-size:14px;cursor:pointer;transition:.3s;}
+.float-btn:disabled{opacity:.3;cursor:not-allowed;}
+.lantern-hint{color:rgba(200,180,220,.25);font-size:13px;margin-top:16px;}
+.wish-cloud{position:absolute;font-size:15px;color:rgba(255,200,150,.8);opacity:0;transition:all 2s ease;pointer-events:none;letter-spacing:2px;text-shadow:0 0 20px rgba(255,200,150,.5);}
+.wish-cloud.show{opacity:1;transform:translateY(-120px);}
 
 /* ===== 场景6：终章 ===== */
 .scene-6{background:linear-gradient(135deg,#1a0a2a,#2a1040,#1a0a2a);overflow:hidden;}
@@ -135,7 +141,7 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
 
 <!-- 场景0：生日烛 -->
 <div class="scene scene-0 active" id="s0">
-  <div class="sub">\u2728 给妈妈 \u2728</div>
+  <div class="sub">✨ 给妈妈 ✨</div>
   <div class="candle-area" id="candleArea">
     <div class="candle-body"></div>
     <div class="candle-wick"></div>
@@ -143,69 +149,73 @@ body{background:#0a0a12;min-height:100vh;overflow:hidden;font-family:'Georgia','
   </div>
   <div class="blow-hint" id="blowHint">吹熄蜡烛，开始吧</div>
   <div class="blow-progress"><div class="blow-fill" id="blowFill"></div></div>
-  <button class="next-btn hidden" id="next0" onclick="goScene(1)">\u2192</button>
+  <button class="next-btn hidden" id="next0" onclick="goScene(1)">→</button>
 </div>
 
 <!-- 场景1：妈妈的味道 -->
 <div class="scene scene-1" id="s1">
-  <div class="sub">\uD83C\uDF72 妈妈的味道</div>
+  <div class="sub">🍲 妈妈的味道</div>
   <div class="food-grid" id="foodGrid"></div>
   <div class="food-hint" id="foodHint">点击翻开妈妈常做的菜</div>
-  <button class="next-btn hidden" id="next1" onclick="goScene(2)">\u2192</button>
+  <button class="next-btn hidden" id="next1" onclick="goScene(2)">→</button>
 </div>
 
 <!-- 场景2：妈妈的话 -->
 <div class="scene scene-2" id="s2">
-  <div class="sub">\u2668 妈妈的话</div>
+  <div class="sub">♨ 妈妈的话</div>
   <div class="saying-grid" id="sayingGrid"></div>
   <div class="saying-hint" id="sayingHint">点击翻开妈妈说过的那些话</div>
-  <button class="next-btn hidden" id="next2" onclick="goScene(3)">\u2192</button>
+  <button class="next-btn hidden" id="next2" onclick="goScene(3)">→</button>
 </div>
 
 <!-- 场景3：小时候 -->
 <div class="scene scene-3" id="s3">
-  <div class="sub">\uD83C\uDFD5\uFE0F 小时候</div>
+  <div class="sub">⛵ 小时候</div>
   <div class="child-grid" id="childGrid"></div>
   <div class="child-prog" id="childProg">翻开童年的记忆 0/9</div>
-  <button class="next-btn hidden" id="next3" onclick="goScene(4)">\u2192</button>
+  <button class="next-btn hidden" id="next3" onclick="goScene(4)">→</button>
 </div>
 
 <!-- 场景4：音乐盒 -->
 <div class="scene scene-4" id="s4">
-  <div class="sub">\uD83C\uDFB5 小时候的歌</div>
+  <div class="sub">🎵 小时候的歌</div>
   <div class="music-box" id="musicBox">
     <div class="box-lid" id="boxLid"></div>
     <div class="box-body"></div>
     <div class="box-key" id="boxKey"></div>
   </div>
-  <div class="music-score" id="musicScore">\u2728 ...</div>
-  <button class="next-btn hidden" id="next4" onclick="goScene(5)">\u2192</button>
+  <div class="music-score" id="musicScore">✨ ...</div>
+  <button class="next-btn hidden" id="next4" onclick="goScene(5)">→</button>
 </div>
 
 <!-- 场景5：许愿灯 -->
 <div class="scene scene-5" id="s5">
-  <div class="sub">\uD83C\uDFEE 愿</div>
-  <div class="lantern-wrap" id="lanternWrap" onclick="floatLantern()">
+  <div class="sub">🏮 愿</div>
+  <div class="lantern-wrap" id="lanternWrap">
     <div class="lantern-line"></div>
     <div class="lantern-top"></div>
-    <div class="lantern-body"></div>
+    <div class="lantern-body" id="lanternBody"></div>
     <div class="lantern-tassel"></div>
   </div>
-  <div class="lantern-hint" id="lanternHint">点一下，放一盏灯</div>
-  <button class="next-btn hidden" id="next5" onclick="goScene(6)">\u2192</button>
+  <div class="wish-input-wrap">
+    <input type="text" class="wish-input" id="wishInput" placeholder="写下你的愿望..." maxlength="20">
+  </div>
+  <button class="float-btn" id="floatBtn" onclick="floatLantern()">放飞</button>
+  <div class="lantern-hint" id="lanternHint">写下愿望，点击放飞</div>
+  <button class="next-btn hidden" id="next5" onclick="goScene(6)">→</button>
 </div>
 
 <!-- 场景6 -->
 <div class="scene scene-6" id="s6">
-  <div class="final-heart" id="finalHeart">\uD83D\uDC96</div>
+  <div class="final-heart" id="finalHeart">💖</div>
   <div class="final-title" id="finalTitle">辛苦了，妈妈</div>
   <div class="final-lines" id="finalLines">
     你说过的话<br>
     我都记在心里<br><br>
-    \u2728
+    ✨
   </div>
   <div class="final-petals" id="finalPetals"></div>
-  <button class="final-again" id="finalAgain" onclick="restartJourney()">\u21BA 再走一遍</button>
+  <button class="final-again" id="finalAgain" onclick="restartJourney()">↺ 再走一遍</button>
 </div>
 
 </div>
@@ -304,6 +314,7 @@ function goScene(n){
     if(n===2)initSayings();
     if(n===3)initChildhood();
     if(n===4)initMusicBox();
+    if(n===5)initLantern();
   },300);
 }
 
@@ -330,7 +341,7 @@ let blowVal=0,blowing=false;
       if(blowVal>=100){
         clearInterval(iv);
         flame.classList.remove('dying');flame.classList.add('gone');
-        document.getElementById('blowHint').textContent='\u2728';
+        document.getElementById('blowHint').textContent='✨';
         document.getElementById('next0').classList.remove('hidden');
         SFX.chime();
       }
@@ -342,9 +353,9 @@ let blowVal=0,blowing=false;
 // ===== 场景1：妈妈的味道 =====
 let foodRevealed=0;
 const foodData=[
-  {e:'\uD83E\uDD5F',l:'饺子'},{e:'\uD83C\uDF5C',l:'面条'},{e:'\uD83C\uDF54',l:'红烧肉'},
-  {e:'\uD83C\uDF72',l:'红烧鱼'},{e:'\uD83E\uDD63',l:'汤'},{e:'\uD83C\uDF73',l:'鸡蛋羹'},
-  {e:'\uD83C\uDF60',l:'糖葫芦'},{e:'\uD83C\uDF4E',l:'苹果'},{e:'\uD83C\uDF6D',l:'糖'}
+  {e:'🥟',l:'饺子'},{e:'🍜',l:'面条'},{e:'🍔',l:'红烧肉'},
+  {e:'🍲',l:'红烧鱼'},{e:'🥣',l:'汤'},{e:'🍳',l:'鸡蛋羹'},
+  {e:'🍡',l:'糖葫芦'},{e:'🍎',l:'苹果'},{e:'🍬',l:'糖'}
 ];
 function initFood(){
   const g=document.getElementById('foodGrid');g.innerHTML='';foodRevealed=0;
@@ -358,9 +369,9 @@ function initFood(){
       SFX.reveal();
       t.classList.add('revealed');
       foodRevealed++;
-      document.getElementById('foodHint').textContent='\u2728 '+d.l;
+      document.getElementById('foodHint').textContent='✨ '+d.l;
       if(foodRevealed===9){
-        document.getElementById('foodHint').textContent='\u2728 都是妈妈的味道';
+        document.getElementById('foodHint').textContent='✨ 都是妈妈的味道';
         document.getElementById('next1').classList.remove('hidden');
         SFX.chime();
       }
@@ -386,10 +397,10 @@ function initSayings(){
       if(t.classList.contains('revealed'))return;
       SFX.reveal();
       t.classList.add('revealed');
-      t.textContent='\u201C'+d+'\u201D';
+      t.textContent='"'+d+'"';
       sayingRevealed++;
       if(sayingRevealed===9){
-        document.getElementById('sayingHint').textContent='\u2728 这些话，听了多少次';
+        document.getElementById('sayingHint').textContent='✨ 这些话，听了多少次';
         document.getElementById('next2').classList.remove('hidden');
         SFX.chime();
       }
@@ -400,9 +411,9 @@ function initSayings(){
 
 // ===== 场景3：小时候 =====
 const childData=[
-  {e:'\uD83D\uDC63',l:'学走路'},{e:'\uD83D\uDCDA',l:'讲故事'},{e:'\uD83C\uDF82',l:'过生日'},
-  {e:'\uD83D\uDE82',l:'接放学'},{e:'\uD83C\uDFA8',l:'画画'},{e:'\uD83E\uDDD4',l:'剪头发'},
-  {e:'\u26FA',l:'去公园'},{e:'\uD83C\uDFB5',l:'唱儿歌'},{e:'\uD83D\uDC76',l:'哄睡觉'}
+  {e:'👣',l:'学走路'},{e:'📚',l:'讲故事'},{e:'🎂',l:'过生日'},
+  {e:'🚂',l:'接放学'},{e:'🎨',l:'画画'},{e:'🧔',l:'剪头发'},
+  {e:'⛺',l:'去公园'},{e:'🎵',l:'唱儿歌'},{e:'👶',l:'哄睡觉'}
 ];
 let childRevealed=0;
 function initChildhood(){
@@ -437,14 +448,14 @@ function initMusicBox(){
   document.getElementById('boxLid').classList.remove('open');
   document.getElementById('boxKey').classList.remove('show');
   melodyIdx=0;boxOpened=false;
-  document.getElementById('musicScore').textContent='\u2728 ...';
+  document.getElementById('musicScore').textContent='✨ ...';
   document.getElementById('next4').classList.add('hidden');
   setTimeout(()=>{
     document.getElementById('boxLid').classList.add('open');
     SFX.t(400,.3,'sine',.08);
     setTimeout(()=>{
       document.getElementById('boxKey').classList.add('show');
-      document.getElementById('musicScore').textContent='\uD83C\uDFB5 按顺序弹';
+      document.getElementById('musicScore').textContent='🎵 按顺序弹';
       boxOpened=true;
     },600);
   },400);
@@ -466,9 +477,9 @@ function hitNote(note,el){
     el.classList.add('correct');
     setTimeout(()=>el.classList.remove('correct'),300);
     melodyIdx++;
-    document.getElementById('musicScore').textContent='\u2728 '+'\u2B50'.repeat(melodyIdx)+'\u2606'.repeat(7-melodyIdx);
+    document.getElementById('musicScore').textContent='✨ '+'⭐'.repeat(melodyIdx)+'☆'.repeat(7-melodyIdx);
     if(melodyIdx===7){
-      document.getElementById('musicScore').textContent='\u2728 送给你';
+      document.getElementById('musicScore').textContent='✨ 送给你';
       document.getElementById('next4').classList.remove('hidden');
       SFX.chime();
       setTimeout(()=>SFX.melody(),500);
@@ -480,39 +491,43 @@ function hitNote(note,el){
 }
 
 // ===== 场景5：许愿灯 =====
-let lanternCount=0;
-const wishes=[
-  '身体健康，百病不侵',
-  '平平安安，万事顺遂',
-  '天天开心，笑口常开',
-  '心宽体健，无忧无虑',
-  '岁月静好，慢些老去',
-  '想吃就吃，想睡就睡',
-  '每天都能睡个好觉',
-  '让我多陪陪你'
-];
+let lanternFloated=false;
+function initLantern(){
+  lanternFloated=false;
+  document.getElementById('wishInput').value='';
+  document.getElementById('wishInput').disabled=false;
+  document.getElementById('floatBtn').disabled=false;
+  document.getElementById('floatBtn').textContent='放飞';
+  document.getElementById('lanternHint').textContent='写下愿望，点击放飞';
+  document.getElementById('next5').classList.add('hidden');
+  document.querySelectorAll('.wish-cloud').forEach(w=>w.remove());
+  const body=document.getElementById('lanternBody');
+  body.style.transform='';body.style.opacity='1';body.style.boxShadow='';
+}
 function floatLantern(){
-  if(lanternCount>=wishes.length)return;
+  if(lanternFloated)return;
+  const input=document.getElementById('wishInput');
+  const wish=input.value.trim()||'妈妈平安喜乐';
+  lanternFloated=true;
+  input.disabled=true;
+  document.getElementById('floatBtn').disabled=true;
+  document.getElementById('floatBtn').textContent='已放飞';
   SFX.lantern();
-  const body=document.querySelector('.lantern-body');
+  const body=document.getElementById('lanternBody');
   body.style.transform='translateY(-30px)';
   body.style.boxShadow='0 0 100px rgba(255,100,50,.6),0 0 200px rgba(200,50,30,.25)';
   setTimeout(()=>{body.style.opacity='.2';body.style.transform='translateY(-100px) scale(.5)';},400);
   const wc=document.createElement('div');wc.className='wish-cloud';
-  wc.textContent='\u2728 '+wishes[lanternCount];
-  const col=lanternCount%4;const row=Math.floor(lanternCount/4);
-  wc.style.left=(10+col*95)+'px';wc.style.top=(20+row*60)+'px';
+  wc.textContent='✨ '+wish;
+  wc.style.left='50%';wc.style.top='40%';
+  wc.style.transform='translateX(-50%)';
   document.getElementById('s5').appendChild(wc);
-  setTimeout(()=>wc.classList.add('show'),300);
-  lanternCount++;
-  document.getElementById('lanternHint').textContent='\u2728 '+lanternCount+'/'+wishes.length;
-  if(lanternCount===wishes.length){
-    setTimeout(()=>{
-      document.getElementById('lanternHint').textContent='\u2728 愿';
-      document.getElementById('next5').classList.remove('hidden');
-      SFX.chime();
-    },800);
-  } else setTimeout(()=>{body.style.transform='';body.style.opacity='1';body.style.boxShadow=''},2000);
+  setTimeout(()=>{
+    wc.classList.add('show');
+    document.getElementById('lanternHint').textContent='✨ 愿你所愿皆成真';
+    document.getElementById('next5').classList.remove('hidden');
+    SFX.chime();
+  },300);
 }
 
 // ===== 场景6：终章 =====
@@ -527,7 +542,7 @@ function floatLantern(){
       const iv=setInterval(()=>{
         if(!document.getElementById('s6').classList.contains('active')){clearInterval(iv);return;}
         const p=document.createElement('div');
-        p.textContent=['\uD83C\uDF38','\uD83C\uDF3A','\u2728','\uD83C\uDF37'][Math.floor(Math.random()*4)];
+        p.textContent=['🌸','🌺','✨','🌷'][Math.floor(Math.random()*4)];
         p.style.cssText='position:absolute;left:'+(Math.random()*100)+'%;top:-16px;font-size:'+(16+Math.random()*18)+'px;animation:dropFall '+(4+Math.random()*3)+'s linear forwards;';
         c.appendChild(p);setTimeout(()=>p.remove(),7000);
       },600);
@@ -542,7 +557,7 @@ document.head.appendChild(sFall);
 
 function restartJourney(){
   curScene=0;blowVal=0;foodRevealed=0;sayingRevealed=0;childRevealed=0;
-  melodyIdx=0;boxOpened=false;lanternCount=0;
+  melodyIdx=0;boxOpened=false;lanternFloated=false;
   document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active','out'));
   document.querySelectorAll('.food-tile').forEach(t=>t.classList.remove('revealed'));
   document.querySelectorAll('.saying-tile').forEach(t=>t.classList.remove('revealed'));
@@ -556,9 +571,14 @@ function restartJourney(){
   document.getElementById('blowHint').textContent='吹熄蜡烛，开始吧';
   document.getElementById('boxLid').classList.remove('open');
   document.getElementById('boxKey').classList.remove('show');
-  document.getElementById('musicScore').textContent='\u2728 ...';
-  document.querySelector('.lantern-body').style.cssText='';
-  document.getElementById('lanternHint').textContent='点一下，放一盏灯';
+  document.getElementById('musicScore').textContent='✨ ...';
+  const lbody=document.getElementById('lanternBody');
+  lbody.style.transform='';lbody.style.opacity='1';lbody.style.boxShadow='';
+  document.getElementById('wishInput').value='';
+  document.getElementById('wishInput').disabled=false;
+  document.getElementById('floatBtn').disabled=false;
+  document.getElementById('floatBtn').textContent='放飞';
+  document.getElementById('lanternHint').textContent='写下愿望，点击放飞';
   document.getElementById('finalHeart').classList.remove('show');
   document.getElementById('finalTitle').classList.remove('show');
   document.getElementById('finalLines').classList.remove('show');
